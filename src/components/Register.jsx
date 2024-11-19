@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:4000/v1/tubeyet/register', {
+      const response = await fetch('https://back-notubeyet.vercel.app/v1/tubeyet/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
