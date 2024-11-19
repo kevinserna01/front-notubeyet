@@ -13,7 +13,7 @@ const Login = () => {
     const loginData = { correo, contraseña: password };
 
     try {
-      const response = await fetch('http://localhost:4000/v1/tubeyet/login', {
+      const response = await fetch('https://back-notubeyet.vercel.app/v1/tubeyet/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
