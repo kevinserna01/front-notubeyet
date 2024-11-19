@@ -28,10 +28,26 @@ const Dashboard = () => {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-    setFileType(selectedFile.type);
-    fileInputRef.current.value = null;
-    setError(''); // Limpia errores al seleccionar un nuevo archivo
+
+    // Validación de tamaño y tipo de archivo
+    if (selectedFile) {
+      if (selectedFile.size > 50 * 1024 * 1024) { // Limitar a 50 MB
+        setError('El archivo es demasiado grande. El tamaño máximo permitido es 50MB.');
+        setFile(null);
+        return;
+      }
+
+      if (!selectedFile.type.startsWith('video/')) { // Asegurarse de que es un video
+        setError('Solo se pueden cargar archivos de video.');
+        setFile(null);
+        return;
+      }
+
+      setFile(selectedFile);
+      setFileType(selectedFile.type);
+      fileInputRef.current.value = null;
+      setError(''); // Limpia errores al seleccionar un nuevo archivo
+    }
   };
 
   const handleFileRemove = () => {
