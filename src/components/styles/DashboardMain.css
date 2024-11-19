@@ -1,0 +1,232 @@
+.dashboard-main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.dashboard-header h1 {
+    font-size: 30px;
+    color: #007BFF; /* Azul brillante */
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    font-size: 16px;
+    color: #555; /* Gris suave */
+    margin: 0;
+}
+
+.search-bar {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 200px;
+    margin-top: 10px;
+    transition: border-color 0.3s;
+}
+
+.search-bar:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.header-button,
+.logout-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.header-button {
+    background-color: #007BFF;
+    color: white;
+}
+
+.header-button:hover {
+    background-color: #0056b3;
+}
+
+.header-button:focus {
+    outline: none;
+}
+
+.logout-button {
+    background-color: #FF4C4C; /* Rojo para destacar el cierre de sesión */
+    color: white;
+    margin-left: 20px;
+}
+
+.logout-button:hover {
+    background-color: #FF1A1A; /* Rojo oscuro en hover */
+}
+
+.logout-button:focus {
+    outline: none;
+}
+
+.user-info {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.user-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.user-info p {
+    font-size: 18px;
+    color: #666;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+    max-height: 60vh; /* Limita la altura máxima para activar el scroll */
+    overflow-y: auto; /* Habilita el scroll si el contenido excede la altura */
+}
+
+.video-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #ddd;
+}
+
+.video-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+.video-date {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .dashboard-header h1 {
+        font-size: 24px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .video-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-main {
+        padding: 10px;
+    }
+
+    .video-card {
+        font-size: 14px;
+    }
+
+    .video-title {
+        font-size: 16px;
+    }
+}
+.video-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .video-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .video-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+  }
+  .video-preview {
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .video-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .video-date {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .video-uploader {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .video-title {
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  .video-date {
+    font-size: 0.8rem;
+    color: #777;
+  }
+  
