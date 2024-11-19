@@ -11,7 +11,7 @@ const DashboardMain = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch('https://back-notubeyet.vercel.app/v1/tubeyet/getVideos'); // Ruta para obtener los videos del backend
+        const response = await fetch('http://localhost:4000/v1/tubeyet/getVideos'); // Ruta para obtener los videos del backend
         if (response.ok) {
           const data = await response.json();
           setVideos(data); // Actualizamos el estado con los videos obtenidos
