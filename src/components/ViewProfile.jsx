@@ -40,7 +40,7 @@ const ViewProfile = () => {
   };
 
   const handleGoToDashboard = () => {
-    navigate('/dashboardMain');
+    navigate('/dashboard-main');
   };
 
   const handleLogout = () => {
