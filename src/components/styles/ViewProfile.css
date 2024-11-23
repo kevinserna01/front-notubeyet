@@ -48,4 +48,40 @@
     font-size: 16px;
     font-weight: bold;
   }
+  .view-profile {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Usar toda la altura de la ventana */
+    overflow: hidden; /* Evitar scroll no deseado en el contenedor principal */
+  }
+  
+  .profile-header {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .video-grid {
+    flex: 1;
+    overflow-y: auto; /* Habilitar scroll vertical */
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .video-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
   
