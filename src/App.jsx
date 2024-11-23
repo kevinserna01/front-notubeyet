@@ -2,8 +2,9 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
-import DashboardMain from './components/DashboardMain'; // Importar el nuevo componente
-import Dashboard from './components/Dashboard'; // Importar el componente Dashboard
+import DashboardMain from './components/DashboardMain';
+import Dashboard from './components/Dashboard';
+import ViewProfile from './components/ViewProfile'; // Importar el nuevo componente
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/register" element={<Register />} /> {/* Ruta para registro */}
         <Route path="/dashboard-main" element={<DashboardMain />} /> {/* Ruta principal después del login */}
         <Route path="/dashboard" element={<Dashboard />} /> {/* Ruta para Dashboard */}
+        <Route path="/profile" element={<ViewProfile />} /> {/* Ruta para el perfil del usuario */}
       </Routes>
     </BrowserRouter>
   );

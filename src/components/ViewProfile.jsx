@@ -1,31 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './styles/DashboardMain.css';
+import './styles/ViewProfile.css';
 
-const DashboardMain = () => {
+const ViewProfile = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [videos, setVideos] = useState([]);
+  const [userVideos, setUserVideos] = useState([]);
+  const [userEmail, setUserEmail] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchVideos = async () => {
+    // Obtener el correo del usuario desde el localStorage
+    const email = localStorage.getItem('userEmail');
+    setUserEmail(email);
+
+    // Función para obtener los videos subidos por el usuario
+    const fetchUserVideos = async () => {
       try {
-        const response = await fetch('https://back-notubeyet.vercel.app/v1/tubeyet/getVideos');
+        const response = await fetch(`https://back-notubeyet.vercel.app/v1/tubeyet/getUserVideos?email=${email}`);
         if (response.ok) {
           const data = await response.json();
-          setVideos(data);
+          setUserVideos(data);
         } else {
-          console.error('No se pudieron obtener los videos');
+          console.error('No se pudieron obtener los videos del usuario');
         }
       } catch (error) {
-        console.error('Error al obtener los videos:', error);
+        console.error('Error al obtener los videos del usuario:', error);
       }
     };
 
-    fetchVideos();
+    fetchUserVideos();
   }, []);
 
-  const filteredVideos = videos.filter((video) =>
+  const filteredVideos = userVideos.filter((video) =>
     video.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -33,8 +39,8 @@ const DashboardMain = () => {
     navigate('/dashboard');
   };
 
-  const handleProfileClick = () => {
-    navigate('/profile'); // Redirige a la página de perfil
+  const handleGoToDashboard = () => {
+    navigate('/dashboard');
   };
 
   const handleLogout = () => {
@@ -44,9 +50,9 @@ const DashboardMain = () => {
   };
 
   return (
-    <div className="dashboard-main">
-      <header className="dashboard-header">
-        <button className="header-button">Inicio</button>
+    <div className="view-profile">
+      <header className="profile-header">
+        <p className="user-email">Usuario: {userEmail}</p>
         <input
           type="text"
           placeholder="Buscar..."
@@ -57,8 +63,8 @@ const DashboardMain = () => {
         <button className="header-button" onClick={handleUploadClick}>
           Subir video
         </button>
-        <button className="header-button" onClick={handleProfileClick}>
-          Mi perfil
+        <button className="header-button" onClick={handleGoToDashboard}>
+          Ir al Dashboard
         </button>
         <button className="logout-button" onClick={handleLogout}>
           Cerrar sesión
@@ -66,6 +72,7 @@ const DashboardMain = () => {
       </header>
 
       <main className="video-grid">
+        <h2>Mis Videos</h2>
         {filteredVideos.length > 0 ? (
           filteredVideos.map((video) => (
             <div key={video._id} className="video-card">
@@ -82,17 +89,14 @@ const DashboardMain = () => {
               <p className="video-date">
                 Subido el: {new Date(video.uploadDate).toLocaleDateString()}
               </p>
-              <p className="video-uploader">
-                Subido por: <strong>{video.uploadedBy}</strong>
-              </p>
             </div>
           ))
         ) : (
-          <p>No se encontraron videos</p>
+          <p>No se encontraron videos subidos por este usuario</p>
         )}
       </main>
     </div>
   );
 };
 
-export default DashboardMain;
+export default ViewProfile;
